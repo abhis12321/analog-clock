@@ -30,6 +30,7 @@ body {
   inset: 30px;
   border-radius: 50%;
   background: rgb(21, 21, 62);
+  box-shadow: 5px 5px 5px -2px rgba(47, 46, 46, 0.771), inset 5px 5px 5px -2px rgba(238, 245, 251, 0.705);
 }
 .clock .number::before {
   content: "";
@@ -90,26 +91,31 @@ body {
   border-radius: 5px;
 }
 
+.clock .number .circle div.ring {
+  background-color: rgba(249, 249, 249, 0.299);
+  transform: scaleY(.08) scaleX(3.7) translateX(-0.15px) translateY(50px);
+  border-radius: 50%;
+}
+
 .clock .number .circle#hour div {
-  width: 8px;
+  width: 11px;
   background: white;
-  transform: scale(0.4);
-  animation: hourRotate 43200s linear infinite;
+  transform: scale(0.33);
+  /* animation: hourRotate 43200s linear infinite; */
 }
 .clock .number .circle#minute div {
-  width: 6px;
-  transform: scale(0.45);
-  background-color: rgba(3, 95, 40, 0.88);
-  animation: minuteRotate 3600s linear infinite;
+  width: 7px;
+  background-color: rgba(1, 105, 25, 0.88);
+  /* animation: minuteRotate 3600s linear infinite; */
 }
 .clock .number .circle#second div {
   position: absolute;
   z-index: 100;
-  width: 2px;
+  width: 3px;
   background-color: rgba(255, 0, 0, 0.451);
-  animation: secondRotate 60s linear infinite;
+  /* animation: secondRotate 60s linear infinite; */
 }
-
+/* 
 @keyframes secondRotate {
   0% {
     transform: scale(0.6) rotate(0deg);
@@ -136,12 +142,12 @@ body {
 
 @keyframes hourRotate {
   0% {
-    transform: scale(0.35) rotate(0deg);
+    transform: scale(0.33) rotate(0deg);
   }
   50% {
-    transform: scale(0.35) rotate(180deg);
+    transform: scale(0.33) rotate(180deg);
   }
   100% {
-    transform: scale(0.35) rotate(360deg);
+    transform: scale(0.33) rotate(360deg);
   }
-}
+} */
