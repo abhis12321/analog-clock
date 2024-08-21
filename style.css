@@ -1,5 +1,147 @@
-* , *::after, *::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(212, 220, 227);
+}
+
+.clock {
+  height: 280px;
+  width: 280px;
+  background-color: rgb(212, 220, 227);
+  border-radius: 50px;
+  box-shadow: 10px 10px 20px -5px black, inset 10px 10px 10px 5px white;
+  position: relative;
+}
+
+.clock .number {
+  z-index: 1;
+  position: absolute;
+  inset: 30px;
+  border-radius: 50%;
+  background: rgb(21, 21, 62);
+}
+.clock .number::before {
+  content: "";
+  inset: 30px;
+  position: absolute;
+  border-radius: 50%;
+  background: conic-gradient(red, blue, green, red);
+  animation: rotate 2s linear infinite;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.clock .number::after {
+  content: "";
+  inset: 34px;
+  position: absolute;
+  border-radius: 50%;
+  background: rgb(21, 21, 62);
+}
+
+.clock .number .quarter {
+  position: absolute;
+  inset: 5px;
+  text-align: center;
+  transform: rotate(calc(90deg * var(--i)));
+}
+
+.clock .number .quarter .value {
+  display: inline-block;
+  color: white;
+  font-weight: 600;
+  transform: rotate(calc(-90deg * var(--i)));
+  font-size: 1.25rem;
+}
+
+.clock .number .circle {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  border-radius: 50%;
+}
+
+.clock .number .circle div {
+  position: absolute;
+  width: 2px;
+  height: 50%;
+  transform: scaleY(0.6);
+  transform-origin: bottom;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.clock .number .circle#hour div {
+  width: 8px;
+  background: white;
+  transform: scale(0.4);
+  animation: hourRotate 43200s linear infinite;
+}
+.clock .number .circle#minute div {
+  width: 6px;
+  transform: scale(0.45);
+  background-color: rgba(3, 95, 40, 0.88);
+  animation: minuteRotate 3600s linear infinite;
+}
+.clock .number .circle#second div {
+  position: absolute;
+  z-index: 100;
+  width: 2px;
+  background-color: rgba(255, 0, 0, 0.451);
+  animation: secondRotate 60s linear infinite;
+}
+
+@keyframes secondRotate {
+  0% {
+    transform: scale(0.6) rotate(0deg);
+  }
+  50% {
+    transform: scale(0.6) rotate(180deg);
+  }
+  100% {
+    transform: scale(0.6) rotate(360deg);
+  }
+}
+
+@keyframes minuteRotate {
+  0% {
+    transform: scale(0.45) rotate(0deg);
+  }
+  50% {
+    transform: scale(0.45) rotate(180deg);
+  }
+  100% {
+    transform: scale(0.45) rotate(360deg);
+  }
+}
+
+@keyframes hourRotate {
+  0% {
+    transform: scale(0.35) rotate(0deg);
+  }
+  50% {
+    transform: scale(0.35) rotate(180deg);
+  }
+  100% {
+    transform: scale(0.35) rotate(360deg);
+  }
 }
